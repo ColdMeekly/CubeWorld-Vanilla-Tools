@@ -8,4 +8,4 @@ e.g.
 192.168.1.2=Joe
 ...
 ```
-(https://femto.pw/ytdu.png)
+![Example of list_players.py](https://femto.pw/ytdu.png)
