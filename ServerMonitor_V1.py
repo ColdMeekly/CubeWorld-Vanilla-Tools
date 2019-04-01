@@ -11,8 +11,8 @@ from json import dumps
 # Game Settings
 
 G_HOSTNAME      =   'screenman.pro'
-G_PROCESS       =   'Server.exe'
-G_PATH          =   'D:\\Games\\Cube World\\cw-miuchiz\\Cube World\\'
+G_PROCESS       =   'ServerModLauncher.exe'
+G_PATH          =   'D:\\Games\\Cube World\\cw3\\Cube World\\'
 G_MAXPLAYERS    =   60
 
 # API Settings
@@ -32,6 +32,7 @@ class ServerManager:
         self.process    = process
         self.path       = path
         self.exe        = self.path + self.process
+        self.wollayexe  = self.path + 'Server.exe'
 
         self.startServer()
 
@@ -49,8 +50,8 @@ class ServerManager:
     def getRunningServer(self):
         for process in process_iter():
             # You have to call process.name to be able to call process.exe WTF!
-            if process.name() == self.process:
-                if process.exe() == self.exe:
+            if process.name() == 'Server.exe':
+                if process.exe() == self.wollayexe:
                     return process
         return False
 
@@ -167,10 +168,5 @@ if __name__ == "__main__":
     my_event2 = Event()
     thread2  = APIWrapper(cubeworld, ('', A_PORT), my_event)
     thread2.start()
-    thread1.join()
     thread2.join()
     cubeworld.closeServer()
-
-    
-
-
